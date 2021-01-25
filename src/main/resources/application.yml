@@ -1,9 +1,38 @@
 server:
   port: 8002
-  
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+    
 spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+      
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Seoul
-    username: aquatixo
-    password: bsky8895
+    username: cos
+    password: cos1234
+    
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update #create or update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #Entity(table)만들때 변수명 그대로 이용
+      use-new-id-generator-mappings: false #jpa의 기본 넘버링 전략 안쓴다
+    show-sql: true #console에 table 보여주기
+    properties: 
+      hibernate.format_sql: true #잘 정리된 sql 보여주기 (원래는 한줄인 모양)
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+cos:
+  key: cos1234
